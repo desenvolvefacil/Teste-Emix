@@ -63,8 +63,8 @@ namespace WebApplication1
 
             if (ret.cep != null)
             {
-                MsgLabel.Text = "CEP Encontrado";
-                MsgLabel.ForeColor = Color.Green;
+                //MsgLabel.Text = "CEP Encontrado";
+                //MsgLabel.ForeColor = Color.Green;
 
                 CepEntity o = new CepEntity();
 
@@ -80,6 +80,9 @@ namespace WebApplication1
 
                 //salva no banco de dados para uma pesquisa futura
                 dao.InserirCep(o);
+
+                MsgLabel.Text = o.Logradouro + " - " + o.Bairro + " - " + o.Localidade + " - " + o.Uf;
+                MsgLabel.ForeColor = Color.Blue;
             }
             else
             {

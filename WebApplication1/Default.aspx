@@ -10,7 +10,16 @@
             &nbsp;<asp:Button ID="PesquisarPorCepButton" CssClass="btn btn-primary btn-lg" runat="server" Text="Pesquisar" OnClick="PesquisarPorCepButton_Click" />
         </p>
         <p>
-            <asp:Label ID="MsgLabel" runat="server"></asp:Label>
+            
+
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <asp:Label ID="MsgLabel" runat="server"></asp:Label>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="PesquisarPorCepButton" EventName="Click" />
+                </Triggers>
+            </asp:UpdatePanel>
         </p>
     </div>
 
@@ -55,8 +64,15 @@
             &nbsp;<asp:Button ID="PesquisarPorNomeButton" CssClass="btn btn-primary btn-lg" runat="server" Text="Pesquisar" OnClick="PesquisarPorNomeButton_Click" />
         </p>
         <p class="lead">
-            <asp:GridView ID="ResultadosGridView" runat="server">
-            </asp:GridView>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <asp:GridView ID="ResultadosGridView" runat="server">
+                    </asp:GridView>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="PesquisarPorNomeButton" EventName="Click" />
+                </Triggers>
+            </asp:UpdatePanel>
         </p>
     </div>
 
@@ -92,15 +108,21 @@
                 <asp:ListItem>SE</asp:ListItem>
                 <asp:ListItem>TO</asp:ListItem>
             </asp:DropDownList>
-            &nbsp;<asp:Button ID="PesquisaPorEstadoButton" CssClass="btn btn-primary btn-lg" runat="server" Text="Pesquisar" OnClick="PesquisaPorEstadoButton_Click"  />
+            &nbsp;<asp:Button ID="PesquisaPorEstadoButton" CssClass="btn btn-primary btn-lg" runat="server" Text="Pesquisar" OnClick="PesquisaPorEstadoButton_Click" />
         </p>
 
         <p class="lead">
-            <asp:GridView ID="ResultadosUFGridView" runat="server">
-            </asp:GridView>
+            <asp:UpdatePanel ID="ResUfUpdatePanel" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <asp:GridView ID="ResultadosUFGridView" runat="server">
+                    </asp:GridView>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="PesquisaPorEstadoButton" EventName="Click" />
+                </Triggers>
+            </asp:UpdatePanel>
         </p>
 
-        </div>
-
+    </div>
 
 </asp:Content>
